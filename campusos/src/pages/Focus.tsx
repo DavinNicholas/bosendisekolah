@@ -24,7 +24,7 @@ export default function Focus() {
   };
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let interval: ReturnType<typeof setInterval> | undefined;
     if (isRunning && timeLeft > 0) {
       interval = setInterval(() => {
         setTimeLeft((prev) => prev - 1);
@@ -37,7 +37,6 @@ export default function Focus() {
           durationMinutes: settings.focusDuration,
           subjectId: selectedSubject,
           taskId: null,
-          startedAt: new Date().toISOString(),
           completedAt: new Date().toISOString(),
         });
       }
